@@ -14,16 +14,29 @@ impl Default for FlexNum {
 }
 
 #[derive(Deserialize)]
-pub struct LoginReq { pub username: String, pub password: String }
+pub struct LoginReq {
+    pub username: String,
+    pub password: String,
+}
 
 #[derive(Deserialize)]
-pub struct DateQuery { pub date: String }
+pub struct DateQuery {
+    pub date: String,
+}
 
 #[derive(Deserialize)]
-pub struct SeatQuery { pub date: String, pub segment: String, pub start: String, pub end: String }
+pub struct SeatQuery {
+    pub date: String,
+    pub segment: String,
+    pub start: String,
+    pub end: String,
+}
 
 #[derive(Deserialize)]
-pub struct ReserveReq { pub seat_id: String, pub segment_id: String }
+pub struct ReserveReq {
+    pub seat_id: String,
+    pub segment_id: String,
+}
 
 #[derive(Deserialize)]
 pub struct CreateTaskReq {
@@ -37,13 +50,13 @@ pub struct CreateTaskReq {
 }
 
 #[derive(Serialize)]
-pub struct TaskInfo { 
-    pub id: String, 
-    pub target_date: String, 
+pub struct TaskInfo {
+    pub id: String,
+    pub target_date: String,
     pub start_time: String,
-    pub area_id: String, 
+    pub area_id: String,
     pub area_name: String,
-    pub interval_sec: u64 
+    pub interval_sec: u64,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -99,7 +112,7 @@ pub struct SeatInfo {
     pub no: String,
     #[serde(default)]
     pub name: String,
-    pub status: FlexNum, 
+    pub status: FlexNum,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -114,4 +127,16 @@ pub struct Subscription {
     pub end_time: String,
     #[serde(default, rename = "statusName")]
     pub status_name: String,
+}
+
+#[derive(Deserialize)]
+pub struct UpdateDingTalkReq {
+    pub webhook: String,
+    pub secret: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct DingTalkConfig {
+    pub webhook: String,
+    pub secret: Option<String>,
 }
